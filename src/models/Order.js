@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const orderItemSchema = new mongoose.Schema({
-  productId: {
+  id: {
     type: Number,
     required: true
   },
@@ -21,12 +21,12 @@ const orderItemSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  quantity: {
+  cartQuantity: {
     type: Number,
     required: true,
     default: 1
   }
-});
+}, { _id: false });
 
 const orderSchema = new mongoose.Schema({
   customerName: {

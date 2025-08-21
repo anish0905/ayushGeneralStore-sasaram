@@ -1,10 +1,14 @@
 import { NextResponse } from 'next/server';
-import { ordersStorage } from '@/lib/ordersStorage';
+import connectDB from '@/lib/mongodb';
+import Order from '@/models/Order';
 
 export async function POST(request) {
   try {
+    await connectDB();
     const body = await request.json();
     const { customerName, customerPhone, customerAddress, items, totalAmount } = body;
+
+    console.log('Received order data:', { customerName, customerPhone, customerAddress, items, totalAmount });
 
     // Validate required fields
     if (!customerName || !customerPhone || !customerAddress || !items || !totalAmount) {
@@ -14,14 +18,28 @@ export async function POST(request) {
       );
     }
 
-    // Create new order using shared storage
-    const order = ordersStorage.addOrder({
+    // Transform items to match schema
+    const transformedItems = items.map(item => ({
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      image: item.image,
+      category: item.category,
+      cartQuantity: parseInt(item.cartQuantity) || 1
+    }));
+
+    console.log('Transformed items:', transformedItems);
+
+    // Create new order
+    const order = new Order({
       customerName,
       customerPhone,
       customerAddress,
-      items,
+      items: transformedItems,
       totalAmount
     });
+
+    await order.save();
 
     return NextResponse.json(
       { 
@@ -41,10 +59,39 @@ export async function POST(request) {
   }
 }
 
-export async function GET() {
+export async function GET(request) {
   try {
-    // Get orders from shared storage
-    const orders = ordersStorage.getOrders();
+    await connectDB();
+    
+    const { searchParams } = new URL(request.url);
+    const status = searchParams.get('status');
+    const startDate = searchParams.get('startDate');
+    const endDate = searchParams.get('endDate');
+    
+    // Build filter object
+    let filter = {};
+    
+    if (status && status !== 'all') {
+      filter.status = status;
+    }
+    
+    if (startDate && endDate) {
+      filter.createdAt = {
+        $gte: new Date(startDate),
+        $lte: new Date(endDate + 'T23:59:59.999Z')
+      };
+    } else if (startDate) {
+      filter.createdAt = {
+        $gte: new Date(startDate)
+      };
+    } else if (endDate) {
+      filter.createdAt = {
+        $lte: new Date(endDate + 'T23:59:59.999Z')
+      };
+    }
+
+    // Get orders with filters
+    const orders = await Order.find(filter).sort({ createdAt: -1 });
     return NextResponse.json(orders);
 
   } catch (error) {

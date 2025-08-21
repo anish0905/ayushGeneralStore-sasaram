@@ -56,7 +56,7 @@ const Cart = ({ isOpen, onClose }) => {
       <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
         <div className="p-6">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-gray-800">Shopping Cart</h2>
+            <h2 className="text-2xl font-bold text-gray-900">Shopping Cart</h2>
             <button
               onClick={onClose}
               className="text-gray-500 hover:text-gray-700"
@@ -74,7 +74,7 @@ const Cart = ({ isOpen, onClose }) => {
             </div>
           ) : showCheckout ? (
             <div>
-              <h3 className="text-lg font-semibold mb-4">Customer Details</h3>
+              <h3 className="text-lg font-semibold mb-4 text-gray-900">Customer Details</h3>
               <form onSubmit={handleCheckout} className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -85,7 +85,7 @@ const Cart = ({ isOpen, onClose }) => {
                     required
                     value={customerDetails.name}
                     onChange={(e) => setCustomerDetails({...customerDetails, name: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full text-black px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                     placeholder="Enter your full name"
                   />
                 </div>
@@ -98,7 +98,7 @@ const Cart = ({ isOpen, onClose }) => {
                     required
                     value={customerDetails.phone}
                     onChange={(e) => setCustomerDetails({...customerDetails, phone: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full text-black px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                     placeholder="Enter your phone number"
                   />
                 </div>
@@ -110,7 +110,7 @@ const Cart = ({ isOpen, onClose }) => {
                     required
                     value={customerDetails.address}
                     onChange={(e) => setCustomerDetails({...customerDetails, address: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-3 text-black py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                     rows="3"
                     placeholder="Enter your complete address"
                   />
