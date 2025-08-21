@@ -1,8 +1,10 @@
 import { NextResponse } from 'next/server';
-import { ordersStorage } from '@/lib/ordersStorage';
+import connectDB from '@/lib/mongodb';
+import Order from '@/models/Order';
 
 export async function PATCH(request, { params }) {
   try {
+    await connectDB();
     const { id } = params;
     const body = await request.json();
     const { status } = body;
@@ -14,8 +16,12 @@ export async function PATCH(request, { params }) {
       );
     }
 
-    // Update order status using shared storage
-    const updatedOrder = ordersStorage.updateOrderStatus(id, status);
+    // Update order status in MongoDB
+    const updatedOrder = await Order.findByIdAndUpdate(
+      id,
+      { status },
+      { new: true }
+    );
     
     if (!updatedOrder) {
       return NextResponse.json(
