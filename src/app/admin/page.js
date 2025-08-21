@@ -102,7 +102,7 @@ export default function AdminPage() {
                         {new Date(order.createdAt).toLocaleString()}
                       </p>
                     </div>
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(order.status)}`}>
+                    <span className={`px-3 py-1 rounded-full  text-sm font-medium ${getStatusColor(order.status)}`}>
                       {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
                     </span>
                   </div>
@@ -133,7 +133,7 @@ export default function AdminPage() {
                                                  <div key={index} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                            <div className="text-2xl">{item.image}</div>
                            <div className="flex-1">
-                             <p className="font-medium text-sm">{item.name}</p>
+                             <p className="font-medium text-sm text-black">{item.name}</p>
                              <p className="text-xs text-blue-600">{item.quantity}</p>
                              <p className="text-xs text-gray-600">Cart Qty: {item.cartQuantity}</p>
                              <p className="text-xs text-green-600">{item.price}</p>
@@ -147,12 +147,12 @@ export default function AdminPage() {
                     <select
                       value={order.status}
                       onChange={(e) => updateOrderStatus(order._id, e.target.value)}
-                      className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                      className="px-3 py-2 border text-black border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                     >
-                      <option value="pending">Pending</option>
-                      <option value="confirmed">Confirmed</option>
-                      <option value="delivered">Delivered</option>
-                      <option value="cancelled">Cancelled</option>
+                      <option className='text-black' value="pending">Pending</option>
+                      <option className='text-black'  value="confirmed">Confirmed</option>
+                      <option className='text-black'  value="delivered">Delivered</option>
+                      <option className='text-black'  value="cancelled">Cancelled</option>
                     </select>
                   </div>
                 </div>

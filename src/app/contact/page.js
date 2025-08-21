@@ -123,13 +123,13 @@ export default function Contact() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2">Visit Our Store</h3>
-                    <p className="text-gray-600">
-                      123 Main Street<br />
-                      City Center, State 12345<br />
-                      United States
-                    </p>
+                  <div className=' text-gray-800'>
+                    <h3 className="text-lg font-semibold mb-2">Visit Our Store</h3>
+                   <p>Ayush General Store</p>
+              <p>Gandhi nagar</p>
+                <p>G T Road 821115</p>
+           
+              <p>Email: info@ayushgeneralstore.com</p>
                   </div>
                 </div>
 
@@ -142,7 +142,7 @@ export default function Contact() {
                   <div>
                     <h3 className="text-lg font-semibold text-gray-800 mb-2">Call Us</h3>
                     <p className="text-gray-600">
-                      Phone: (555) 123-4567<br />
+                      Phone:  7250609965 <br/>
                       Fax: (555) 123-4568
                     </p>
                   </div>

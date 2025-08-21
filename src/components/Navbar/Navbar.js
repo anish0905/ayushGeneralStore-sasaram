@@ -39,9 +39,9 @@ const Navbar = () => {
                 <Link href="/contact" className="text-white hover:text-green-200 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
                   Contact
                 </Link>
-                <Link href="/admin" className="text-white hover:text-green-200 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                {/* <Link href="/admin" className="text-white hover:text-green-200 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
                   Admin
-                </Link>
+                </Link> */}
                 <CartIcon onClick={() => setIsCartOpen(true)} />
               </div>
             </div>

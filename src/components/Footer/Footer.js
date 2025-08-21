@@ -66,9 +66,10 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
             <div className="space-y-2 text-gray-300">
-              <p>123 Main Street</p>
-              <p>City Center, State 12345</p>
-              <p>Phone: (555) 123-4567</p>
+              <p>Ayush General Store</p>
+              <p>Gandhi nagar</p>
+                <p>G T Road 821115</p>
+              <p>Phone: 7250609965</p>
               <p>Email: info@ayushgeneralstore.com</p>
             </div>
           </div>
