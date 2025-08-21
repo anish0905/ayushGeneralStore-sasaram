@@ -23,7 +23,7 @@ export default function About() {
                 Ayush General Store was founded in 2010 with a simple mission: to provide our community with quality products at affordable prices.
               </p>
               <p className="text-lg text-gray-600">
-                Today, we're proud to serve thousands of satisfied customers and continue to grow our business while maintaining the personal touch that makes us special.
+                Today, we&apos;re proud to serve thousands of satisfied customers and continue to grow our business while maintaining the personal touch that makes us special.
               </p>
             </div>
             <div className="relative">
@@ -65,7 +65,7 @@ export default function About() {
               </div>
               <h3 className="text-xl font-semibold text-center text-gray-800 mb-4">Community</h3>
               <p className="text-gray-600 text-center">
-                We're proud to be part of our local community and support local businesses.
+                We&apos;re proud to be part of our local community and support local businesses.
               </p>
             </div>
             <div className="bg-white rounded-lg p-8 shadow-md">
